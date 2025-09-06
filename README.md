@@ -8,14 +8,6 @@ This project bridges AI models with Pokémon knowledge, enabling both querying P
 
 ---
 
-## 📂 Project Structure
-
-**pokemon-mcp-server**/
-├── main.py # MCP server entrypoint
-├── battle_simulator.py # Battle Simulation Tool
-├── requirements.txt # Python dependencies
-└── README.md # Documentation
-
 ## ⚡ Features
 
 ### Pokémon Data Resource
@@ -88,6 +80,38 @@ Response:
   ],
   "moves": ["Thunderbolt", "Quick Attack", "Iron Tail"],
   "evolution_chain": ["Pichu", "Pikachu", "Raichu"]
+}
+```
+### 2. Simulate a Battle
+
+Request:
+```bash
+POST /battle/simulate
+Content-Type: application/json
+
+{
+  "attacker": "Charmander",
+  "defender": "Squirtle",
+  "attacker_moves": ["seismic-toss","fury-swipes","mud-slap"],
+  "defender_moves": ["Water Gun","bubble","rapid-spin"],
+  "max_turns": 50,
+  "random_seed": 42
+}
+```
+
+Response:
+```bash
+{
+  "winner": "squirtle",
+  "turns": 2,
+  "log": [
+    "-- Turn 1 --",
+    "charmander used seismic-toss (no direct damage in this sim)",
+    "squirtle used bubble -> -69 (effectiveness x2.0)",
+    "-- Turn 2 --",
+    "charmander used seismic-toss (no direct damage in this sim)",
+    "squirtle used bubble -> -49 (effectiveness x2.0)"
+  ]
 }
 ```
 
